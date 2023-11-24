@@ -11,7 +11,7 @@
 
 
 #define SDL_MAIN_HANDLED
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 #define WIDTH 640
 #define HEIGHT 640
