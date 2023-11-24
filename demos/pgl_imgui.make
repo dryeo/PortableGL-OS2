@@ -26,10 +26,10 @@ ifeq ($(config),debug)
   DEFINES   += -DDEBUG -DUSING_PORTABLEGL -D_REENTRANT
   INCLUDES  += -I.. -I../glcommon -I/usr/include/SDL2 -Iimgui -Iimgui/backends
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fno-rtti -fno-exceptions -fno-strict-aliasing -Wall -fsanitize=address,undefined
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fno-rtti -fno-exceptions -fno-strict-aliasing -Wall #-fsanitize=address,undefined
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -fsanitize=address,undefined -L/lib/x86_64-linux-gnu
-  LIBS      += -lSDL2 -lm
+  LDFLAGS   += -Zomf -Zhigh-mem -Zmap
+  LIBS      += -lSDL2 -lm -lcx -lstdc++6
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)

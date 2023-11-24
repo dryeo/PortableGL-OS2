@@ -28,7 +28,7 @@ ifeq ($(config),debug)
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fno-rtti -fno-exceptions -fno-strict-aliasing -Wunused-variable -Wreturn-type
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L/lib/x86_64-linux-gnu
+  LDFLAGS   += -Zomf -Zhigh-mem -Zmap
   LIBS      += -lSDL2 -lm
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 

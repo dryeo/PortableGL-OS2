@@ -28,8 +28,8 @@ ifeq ($(config),debug)
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fno-rtti -fno-exceptions -fno-strict-aliasing -Wunused-variable -Wreturn-type -fopenmp
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L/lib/x86_64-linux-gnu
-  LIBS      += -lSDL2 -lm -lgomp
+  LDFLAGS   += -Zomf -Zhigh-mem -Zmap
+  LIBS      += -lSDL2 -lm -lgomp -lcx -lstdc++6
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
